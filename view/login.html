@@ -1,0 +1,16 @@
+{# view/login.html #} 
+{% extends '_base.html' %} 
+{% block body %}
+<style type="text/css">
+#canvas {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: -1;
+    background-color: #F7FAFC;
+}
+</style>
+<!-- {{mainTitle}} -->
+<canvas id="canvas"></canvas>
+<div id="app"></div>
+{% endblock %}

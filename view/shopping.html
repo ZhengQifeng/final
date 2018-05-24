@@ -1,0 +1,20 @@
+{# view/login.html #} 
+{% extends '_base.html' %} 
+{% block body %}
+<div id="shopping"></div>
+<script>
+	var phone = '{{phone}}',
+		result = {{result}},
+		findResult = [];
+	{% for index, item in findResult %}
+		findResult['{{index}}'] = {};
+		findResult['{{index}}']._id = '{{item._id}}'
+		findResult['{{index}}'].part_name = '{{item.part_name}}';
+		findResult['{{index}}'].part_ident = '{{item.part_ident}}';
+		findResult['{{index}}'].strat_time = '{{item.strat_time}}';
+		findResult['{{index}}'].price = '{{item.price}}';
+		findResult['{{index}}'].number = '{{item.number}}';
+		findResult['{{index}}'].order_state = '{{item.order_state}}';
+	{% endfor %}
+</script>
+{% endblock %}

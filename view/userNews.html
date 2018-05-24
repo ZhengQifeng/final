@@ -1,0 +1,19 @@
+{# view/login.html #} 
+{% extends '_base.html' %} 
+{% block body %}
+<div id="userNews"></div>
+<script>
+	var phone = '{{phone}}',
+		result = {{result}};
+		resultUser = [];
+	{% for index, item in resultUser %}
+		resultUser['{{index}}'] = {};
+		resultUser['{{index}}']._id = '{{item._id}}'
+		resultUser['{{index}}'].pic_src = '{{item.pic_src}}';
+		resultUser['{{index}}'].name = '{{item.name}}';
+		resultUser['{{index}}'].phone = '{{item.phone}}';
+		resultUser['{{index}}'].customer = {{item.customer}};
+		resultUser['{{index}}'].password = '{{item.password}}';
+	{% endfor %}
+</script>
+{% endblock %}

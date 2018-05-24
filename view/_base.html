@@ -1,0 +1,23 @@
+{# view/_base.html #}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{_Config.title}} - {{mainTitle}}</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="{{css}}?ver={{_Config.resVersion}}">
+</head>
+
+<body>
+    {% block body %} Here will be overrided. {% endblock %} {% for i in js %}
+    <script type="text/javascript" src={{i}}?ver={{_Config.resVersion}}></script>
+    {% endfor %}
+</body>
+
+</html>

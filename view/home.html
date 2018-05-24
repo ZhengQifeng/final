@@ -1,0 +1,55 @@
+{# view/home.html #} 
+{% extends '_base.html' %} 
+{% block body %}
+<div id="home"></div>
+<script type="text/javascript">
+	var phone = '{{phone}}',
+		result = {{result}},
+		fitting = [],
+		classify = [],
+		brand = [],
+		hotParts = [];
+	{% for index, item in fitting %}
+		fitting['{{index}}'] = {};
+		fitting['{{index}}'].id = '{{item._id}}';
+		fitting['{{index}}'].fitting_ident = '{{item.fitting_ident}}'
+		fitting['{{index}}'].title = '{{item.name}}';
+		fitting['{{index}}'].i = '{{item.icon}}';
+	{% endfor %}
+	{% for index, item in classify %}
+		classify['{{index}}'] = {};
+		classify['{{index}}'].classType = [];
+		classify['{{index}}'].classifyParts = [];
+		classify['{{index}}'].name = '{{item.name}}';
+		classify['{{index}}'].backgroundColor = '{{item.backgroundColor}}';
+		{% for index2, item2 in item.classType %}
+			classify['{{index}}'].classType['{{index2}}'] = {};
+			classify['{{index}}'].classType['{{index2}}'].name = '{{item2.name}}';
+			classify['{{index}}'].classType['{{index2}}'].fitting_ident = '{{item2.fitting_ident}}';
+		{% endfor %}
+		{% for index3, item3 in item.classifyParts %}
+			classify['{{index}}'].classifyParts['{{index3}}'] = {};
+			classify['{{index}}'].classifyParts['{{index3}}'].seller = {};
+			classify['{{index}}'].classifyParts['{{index3}}'].id = '{{item3._id}}';
+			classify['{{index}}'].classifyParts['{{index3}}'].src = '{{item3.pic_src}}';
+			classify['{{index}}'].classifyParts['{{index3}}'].value = '{{item3.name}}';
+			classify['{{index}}'].classifyParts['{{index3}}'].price = '{{item3.price}}';
+			classify['{{index}}'].classifyParts['{{index3}}'].seller.name = '{{item3.business_name}}';
+			classify['{{index}}'].classifyParts['{{index3}}'].seller.number = '{{item3.sale}}' + '人';
+		{% endfor %}
+	{% endfor %}
+	{% for index, item in brand %}
+		brand['{{index}}'] = {};
+		brand['{{index}}'].id = '{{item._id}}'
+		brand['{{index}}'].src = '{{item.pic_src}}';
+		brand['{{index}}'].brand_ident = '{{item.brand_ident}}';
+		brand['{{index}}'].value = '{{item.name}}';
+	{% endfor %}
+	{% for index, item in hotParts %}
+		hotParts['{{index}}'] = {};
+		hotParts['{{index}}'].id = '{{item._id}}'
+		hotParts['{{index}}'].src = '{{item.pic_src}}';
+		hotParts['{{index}}'].value = '{{item.name}}';
+	{% endfor %}
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{# view/login.html #} 
+{% extends '_base.html' %} 
+{% block body %}
+<div id="fittingDetails"></div>
+<script>
+	var phone = '{{phone}}',
+		result = {{result}},
+		partResult = {};
+	{% for item in partResult %}
+		partResult._id = '{{item._id}}';
+		partResult.name = '{{item.name}}';
+		partResult.src = '{{item.pic_src}}';
+		partResult.stock = {{item.stock}};
+		partResult.sale = {{item.sale}};
+		partResult.business_name = '{{item.business_name}}';
+		partResult.origin_place = '{{item.origin_place}}';
+		partResult.price = '{{item.price}}';
+	{% endfor %}
+</script>
+{% endblock %}

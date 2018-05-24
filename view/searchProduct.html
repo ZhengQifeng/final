@@ -1,0 +1,32 @@
+{# view/login.html #} 
+{% extends '_base.html' %} 
+{% block body %}
+<div id="searchProduct"></div>
+<script>
+	var phone = '{{phone}}',
+		result = {{result}},
+		count = {{count}},
+		urlQuery = '{{urlQuery}}',
+		sort = '{{sort}}',
+		brandData = [],
+		partsResult = [];
+	urlQuery = urlQuery.replace(/&amp;/, "&");
+	{% for index, item in partsResult %}
+		partsResult['{{index}}'] = {};
+		partsResult['{{index}}']._id = '{{item._id}}'
+		partsResult['{{index}}'].pic_src = '{{item.pic_src}}';
+		partsResult['{{index}}'].name = '{{item.name}}';
+		partsResult['{{index}}'].price = '{{item.price}}';
+		partsResult['{{index}}'].business_name = '{{item.business_name}}';
+		partsResult['{{index}}'].sale = '{{item.sale}}';
+	{% endfor %}
+	{% for index, item in brandResult %}
+		brandData['{{index}}'] = {};
+		brandData['{{index}}'].src = '{{item[0].pic_src}}';
+		brandData['{{index}}'].name = '{{item[0].name}}';
+		brandData['{{index}}'].ident = '{{item[0].brand_ident}}';
+	{% endfor %}
+	console.log(urlQuery);
+	console.log(brandData[0].src);
+</script>
+{% endblock %}
